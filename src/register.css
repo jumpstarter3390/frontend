@@ -1,0 +1,18 @@
+.center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+.head {
+   align-items: center;
+   text-align: center;
+   justify-content: center;
+   padding-top: ;
+}
+.form-horizontal{
+    display:block;
+    width:50%;
+    margin:0 auto;
+}
