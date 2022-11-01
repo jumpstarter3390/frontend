@@ -2,14 +2,10 @@ import React from 'react';
 import { Form, Button, Row } from "react-bootstrap";
 import './register.css';
 
-export default function Register() {
+const Register = () => {
     return (
-        <>
-
-
         <div className="center" >
-
-        <Row className="head"> 
+      <Row className="head">
             <h2>Jumpstarter</h2>
         </Row>
         <Row className="mb-3">
@@ -35,6 +31,6 @@ export default function Register() {
             </Form>
          </Row>
          </div>
-        </>
-    )
-}
+    );
+};
+export default Register;
