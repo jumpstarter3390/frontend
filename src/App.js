@@ -1,16 +1,32 @@
 import { Container, Col, Row } from "react-bootstrap";
-import Register from "./register";
+import Register from "./Register";
+import { Route, Routes } from "react-router-dom";
+import Header from "./Header";
+import Home from "./Home";
+import Developers from "./DevelopmentTeam";
+import First from "./First";
+import Second from "./Second";
+import Third from "./Third";
+import Fourth from "./Fourth";
+import Fifth from "./Fifth";
 
 function App() {
-  return (
-    <Container>
-      <Row>
-        <Col xs={12} sm={12} md={6} lg={6}></Col>
-        <Register />
-        <Col xs={12} sm={12} md={6} lg={6}></Col>
-      </Row>
-    </Container>
-  );
-}
-
+  return(
+    <div className ="min-h-screen">
+      <Header />
+      {/* Declaring Routes */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/development" element={<Developers />} />
+        <Route path="/first" element={<First />} />
+        <Route path="/second" element={<Second />} />
+        <Route path="/third" element={<Third />} />
+        <Route path="/fourth" element={<Fourth />} />
+        <Route path="/fifth" element={<Fifth />} />
+      </Routes>
+    </div>
+);
+};
 export default App;
