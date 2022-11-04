@@ -10,7 +10,6 @@ const Home = () => {
         <h1 className="text-5xl text-center">This is Homepage</h1>
 
         <div className="layout">
-          <Link to="/first" className="FirstGrade"><img src={Image} /> </Link>
           <Link to="/second" className="SecondGrade"><img src={Image} /> </Link>
           <Link to="/third" className="ThirdGrade"><img src={Image} /> </Link>
           <Link to="/fourth" className="FourthGrade"><img src={Image} /> </Link>
