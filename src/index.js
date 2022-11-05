@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './register.css';
 import {BrowserRouter } from 'react-router-dom';
+import Flashcard from './flashcard';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,6 +14,8 @@ root.render(
   <React.StrictMode>
 <BrowserRouter>
     <App />
+
+
 </BrowserRouter>
   </React.StrictMode>
 

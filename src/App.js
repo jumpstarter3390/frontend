@@ -1,5 +1,5 @@
 import { Container, Col, Row } from "react-bootstrap";
-import Register from "./Register";
+import Register from "./register";
 import { Route, Routes } from "react-router-dom";
 import Header from "./Header";
 import Home from "./Home";
