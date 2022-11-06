@@ -6,16 +6,18 @@ const Header = () => {
   return(
     <div className="navbar">
         <div className="flex-1">
-          <a href="#" className= "btn">Jumpstarter</a>
+          <h4 className="h4">JumpStarter</h4>
           </div>
 
-        <div className="flex-none">
+        <div className="bar">
               <ul className= "menu">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/register">Register</Link></li>
-              <li><Link to="/development">DevelopmentTeam</Link></li>
+              <li><Link to="/" className="text-link">Home</Link></li>
+              <li><Link to="/register" className="text-link">Register</Link></li>
+              <li><Link to="/development" className="text-link">DevelopmentTeam</Link></li>
               </ul>
         </div>
+
+
     </div>
     
   );
