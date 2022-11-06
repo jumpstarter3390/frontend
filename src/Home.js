@@ -7,7 +7,7 @@ import Image from './4th1.jpg';
 const Home = () => {
     return (
       <div>
-        <h1 className="text-5xl text-center">Homepage</h1>
+        <h1 className="text-5xl text-center">Choose a Grade Level!</h1>
 
         <div className="layout">
           <Link to="/second" className="SecondGrade"><img src={Image} /> </Link>
