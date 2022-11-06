@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import './flashcard.css';
 import Button from 'react-bootstrap/Button';
 
@@ -10,8 +10,9 @@ const Flashcard = () => {
 	const [usans, setUsans] = useState(0);
 	const [score, setScore] = useState(0);
 	const [correct, setCorrect] = useState(true);
+	const inputRef = useRef(null);
 
-	useEffect(() => { },[ans]) 
+	useEffect(() => {},[ans]) 
 
 
 	  function randomNumberInRange(min, max) {
@@ -22,7 +23,7 @@ const Flashcard = () => {
   	setNum1(randomNumberInRange(0, 10));
   	
   	setNum2(randomNumberInRange(0, 10));
-  	setCorrect(true);
+  	setCorrect(false);
 
 
 	}
@@ -37,24 +38,26 @@ const Flashcard = () => {
 
 		<div className="center">
 		<div className="card">	
-			<Button onClick={e => {
-				handleRan()
-				
-			}}> Click to get new Problem</Button>
+	
 			
 			<h2>{num1}</h2>
 			<h3> X </h3>
 			<h2>{num2}</h2>
 
-			<input type="text" id="answer" name="answer" onChange={e => setUsans(e.target.value)}/>
+			<input type="text" ref={inputRef} id="answer" name="answer" onChange={e => setUsans(e.target.value)}/>
 			<Button  onClick={e => 
 				{setCorrect(false)
 				 setAns(num1 * num2)
 				 if(num1 * num2 == usans){
 				 	setScore(score + 1);
+				 	setNum1(randomNumberInRange(0, 10));
+  					setNum2(randomNumberInRange(0, 10));
+  					inputRef.current.value = "";
 				 }
 				 else {
 				 	setScore(0);
+				 	setCorrect(true)
+				 	inputRef.current.value = "";
 				 }
 				 
 			}}> Submit answer </Button>
@@ -62,7 +65,7 @@ const Flashcard = () => {
 			<h2>Score: {score}</h2>
 			
 			{usans == ans && <h2 style={{visibility: correct ? 'hidden' : 'visible'}}> Correct! </h2>}
-			{usans != ans && <h2 style={{visibility: correct ? 'hidden' : 'visible'}}> Incorrect! </h2>}
+			{usans != ans && <h2 style={{visibility: correct ? 'visible' : 'hidden' }}> Incorrect Please Try Again! </h2>}
 			
 		</div>
 		</div>
