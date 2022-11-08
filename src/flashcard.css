@@ -1,15 +1,55 @@
 .card {
+    display: flex;
     align-items: center;
-    background-color: #fff;
+    background-color: #FF0000;
     box-shadow: 0 0 3px 2px rgb(0 0 0 / 30%);
     height: 300px;
     width: 250px;
+
+    background-image: url("./multi.jpg");
+    background-size: 100% 100%;
+        background-repeat: no-repeat;
+
 }
 
-.center {
+.c {
+  display: flex;
   position: fixed;
   top: 50%;
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
+  height: 350px;
+  width: 250px
+
+}
+#answer
+{
+  position: absolute;
+  top: 260px;
+}
+Button
+{
+  position: absolute;
+  top: 300px;
+}
+#num1
+{
+  position: absolute;
+  top: 60px;
+  font-size: 70px;
+  color : green;
+}
+#num2
+{
+  position: absolute;
+  top: 145px;
+  font-size: 80px;
+  color : green;
+}
+
+#score
+{
+  position: absolute;
+  top: 30px;
 }
