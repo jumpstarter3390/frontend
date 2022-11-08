@@ -1,9 +1,11 @@
 import React from 'react';
-
+import Flashcard from './flashcard';
 const Third = () => {
   return (
     <div>
-      <h1 className="text-5xl text-center">This will be the Third Grade Page</h1>
+      
+
+        <Flashcard/>
 
 
     </div>
