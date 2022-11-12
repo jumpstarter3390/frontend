@@ -4,23 +4,25 @@ import './register.css';
 import axios from "axios";
 
 
-
-
-
 export default function Register(){
 
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
+    const [glevel, setGlevel] = React.useState("");
     const [register, setRegister] = React.useState(false);
+    const [score, setScore] = React.useState("");
+
+
 
     const handleSubmit = (e) => {
-
       const configuration = {
       method: "post",
       url: "http://localhost:5000/register",
       data: {
         email,
         password,
+        glevel,
+        score,
       },
     };
     axios(configuration)
@@ -62,14 +64,28 @@ export default function Register(){
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}/>
                 </Form.Group>
+                
+                {/* Grade Level */}
+                <Form.Group controlId="formBasicPassword" className="form-horizontal">
+                  <Form.Label>Grade level 2-5</Form.Label>
+                  <Form.Control type="glevel" placeholder="Grade Level 2-5" className="w-80"
+                                value={glevel}
+                                onChange={(e) => setGlevel(e.target.value)}/>
+                </Form.Group>
+                
+
+
+
                 <Form.Group controlId="formBasicButton" className="form-horizontal">
                 {/* submit button */}
                 <Button variant="primary" type="submit"
-                        onClick={(e)=> handleSubmit(e)}>
+                        onClick={(e)=> { handleSubmit(e)
+
+                        }}>
                   Submit
                 </Button>
                     {register ? (
-             <p className="text-success">You Are Registered Successfully</p>
+             <p className="text-success">You Are Registered Successfully</p>, window.location.href = "/login"
               ) : (
             <p className="text-danger">You Are Not Registered</p>
              )}

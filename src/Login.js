@@ -11,13 +11,13 @@ export default function Register(){
 
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
-    const [register, setRegister] = React.useState(false);
+    const [login, setLogin] = React.useState(false);
 
     const handleSubmit = (e) => {
 
       const configuration = {
       method: "post",
-      url: "http://localhost:5000/register",
+      url: "http://localhost:5000/login",
       data: {
         email,
         password,
@@ -25,13 +25,15 @@ export default function Register(){
     };
     axios(configuration)
         .then((result) => {
-           setRegister(true);
+            setLogin(true);
+            console.log(result.data.email);
+            window.localStorage.setItem('Email', result.data.email);
+
         })
         .catch((error) => {
             error = new Error();
         })
 
-          {/* display success message */}
 
     // prevent the form from refreshing the whole page
     e.preventDefault();
@@ -50,7 +52,7 @@ export default function Register(){
                 {/* email */}
                 <Form.Group controlId="formBasicEmail" className="form-horizontal">
                   <Form.Label >Email address</Form.Label>
-                  <Form.Control type="email" placeholder="Enter email" className="w-80"
+                  <Form.Control type="email" name="email" placeholder="Enter email" className="w-80"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}/>
                 </Form.Group>
@@ -58,7 +60,7 @@ export default function Register(){
                 {/* password */}
                 <Form.Group controlId="formBasicPassword" className="form-horizontal">
                   <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password" className="w-80"
+                  <Form.Control type="password" name="password" placeholder="Password" className="w-80"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}/>
                 </Form.Group>
@@ -68,10 +70,10 @@ export default function Register(){
                         onClick={(e)=> handleSubmit(e)}>
                   Submit
                 </Button>
-                    {register ? (
-             <p className="text-success">You Are Registered Successfully</p>
+                    {login ? (
+             <p className="text-success">You have logged in Successfully</p>,  window.location.href = "/usflash"
               ) : (
-            <p className="text-danger">You Are Not Registered</p>
+            <p className="text-danger">You are currently logged out</p>
              )}
                 </Form.Group>
             </Form>

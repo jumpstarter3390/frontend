@@ -53,3 +53,25 @@ Button
   position: absolute;
   top: 30px;
 }
+.usemail
+{
+position: fixed;
+width: 600px;
+height: 650px;
+top: 50%;
+left: 80%;
+margin-top: -325px; /* Negative half of height. */
+margin-left: -300px; /* Negative half of width. */
+color: blue;
+}
+.usscore
+{
+position: fixed;
+width: 600px;
+height: 500px;
+top: 50%;
+left: 100%;
+margin-top: -250px; /* Negative half of height. */
+margin-left: -300px; /* Negative half of width. */
+color: blue;
+}

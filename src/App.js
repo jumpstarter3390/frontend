@@ -9,6 +9,8 @@ import Third from "./Third";
 import Fourth from "./Fourth";
 import Fifth from "./Fifth";
 import Login from "./Login"
+import Usflash from "./usflash";
+
 
 function App() {
   return(
@@ -25,6 +27,7 @@ function App() {
         <Route path="/fourth" element={<Fourth />} />
         <Route path="/fifth" element={<Fifth />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/usflash" element={<Usflash />} />
       </Routes>
     </div>
 );
