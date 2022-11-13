@@ -1,8 +1,9 @@
+import React from 'react';
 import {useState, useEffect, useRef} from 'react';
 import useSound from 'use-sound';
 import './flashcard.css';
 import Button from 'react-bootstrap/Button';
-import SFX from './correct.mp3';
+
 const Flashcard = () => {
 
 	const [num1, setNum1] = useState(2);
@@ -12,39 +13,48 @@ const Flashcard = () => {
 	const [score, setScore] = useState(0);
 	const [correct, setCorrect] = useState(true);
 	const inputRef = useRef(null);
+  const [playbackRate, setPlaybackRate] = React.useState(0.75);
+	const soundUrl = 'https://github.com/jumpstarter3390/frontend/blob/main/src/success.mp3?raw=true';
+	const wrong = 'https://github.com/jumpstarter3390/frontend/blob/main/src/incorrect.mp3?raw=true';
 
+	const [play] = useSound(soundUrl, {
+		playbackRate,
+		volume: 1,
+	});
 
-	const [playActive] = useSound(
-		'./correct.mp3',
-		{volume: 0.25}
+	const handleClick = () => {
+     setPlaybackRate(playbackRate + 0.1);
+     play();
+   };
 
-	);
-	const [playOn] = useSound(
-    './correct.mp3',
-    { volume: 0.25 }
- 	);
+	 const [play2] = useSound(wrong, {
+		 playbackRate,
+		 volume: 1,
+	 });
+
+	 const handleClick2 = () => {
+			 setPlaybackRate(playbackRate + 0.1);
+			 play2();
+		 };
 
 	useEffect(() => {},[ans])
-
 
 	  function randomNumberInRange(min, max) {
     	return Math.floor(Math.random() * (max - min + 1)) + min;
   	  }
 
   	const handleRan = () => {
-  	setNum1(randomNumberInRange(0, 10));
 
+  	setNum1(randomNumberInRange(0, 10));
   	setNum2(randomNumberInRange(0, 10));
   	setCorrect(false);
-
-
 	}
    const handleAns = () => {
 
    	setCorrect(true);
 
+	}
 
-   }
 	return (
 
 		<div className="c">
@@ -54,28 +64,31 @@ const Flashcard = () => {
 			<h2 id = "num2">{num2}</h2>
 
 			<input type="text" ref={inputRef} id="answer" name="answer" onChange={e => {setUsans(e.target.value);} }/>
-			<Button onClick={e =>
+			<Button onClick={() =>
 				{
+					setUsans()
 					setCorrect(false)
-				 setAns(num1 * num2)
-				 if(num1 * num2 == usans){
-				 	setScore(score + 1);
-				 	setNum1(randomNumberInRange(0, 10));
-  					setNum2(randomNumberInRange(0, 10));
-  						inputRef.current.value = "";
-							playOn(e);
-				 }
-				 else {
-				 	setScore(0);
-				 	setCorrect(true)
-				 	inputRef.current.value = "";
-				 }
+				  setAns(num1 * num2)
 
-			}}> Submit answer </Button>
+				  	if(num1 * num2 == usans){
+					 		setScore(score + 1);
+				 			setNum1(randomNumberInRange(0, 10));
+  						setNum2(randomNumberInRange(0, 10));
+  						inputRef.current.value = "";
+							handleClick();
+
+				 		}
+				 		else {
+				 			setScore(0);
+				 			setCorrect(true)
+				 			inputRef.current.value = "";
+							handleClick2();
+				 		}
+					}}> Submit answer </Button>
 
 			<h2 id = "score">Score: {score}</h2>
 
-			{usans == ans && <h2 style={{visibility: correct ? 'hidden' : 'visible'}}> Correct! </h2>}
+			{usans == ans && <h2  className = "correct2" style={{visibility: correct ? 'hidden' : 'visible'}} > Correct! </h2>}
 			{usans != ans && <h2 style={{visibility: correct ? 'visible' : 'hidden' }}> Incorrect </h2>}
 
 		</div>
