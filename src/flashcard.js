@@ -88,7 +88,7 @@ const Flashcard = () => {
 
 			<h2 id = "score">Score: {score}</h2>
 
-			{usans == ans && <h2  className = "correct2" style={{visibility: correct ? 'hidden' : 'visible'}} > Correct! </h2>}
+			{usans == ans && <h2 style={{visibility: correct ? 'hidden' : 'visible'}} > Correct! </h2>}
 			{usans != ans && <h2 style={{visibility: correct ? 'visible' : 'hidden' }}> Incorrect </h2>}
 
 		</div>

@@ -7,11 +7,13 @@ import axios from "axios";
 
 
 
-export default function Register(){
+export default function Login(){
 
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [login, setLogin] = React.useState(false);
+   
+
 
     const handleSubmit = (e) => {
 
@@ -34,11 +36,12 @@ export default function Register(){
             error = new Error();
         })
 
-
     // prevent the form from refreshing the whole page
     e.preventDefault();
     // make a popup alert showing the "submitted" text
+
     }
+
 
 
     return (
@@ -67,7 +70,8 @@ export default function Register(){
                 <Form.Group controlId="formBasicButton" className="form-horizontal">
                 {/* submit button */}
                 <Button variant="primary" type="submit"
-                        onClick={(e)=> handleSubmit(e)}>
+                        onClick={(e)=> handleSubmit(e)
+                        }>
                   Submit
                 </Button>
                     {login ? (

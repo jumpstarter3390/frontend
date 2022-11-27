@@ -5,6 +5,9 @@ import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
 import SFX from './correct.mp3';
 import axios from "axios";
+import Header from "./Header";
+
+
 const Usflash = () => {
 
 	const [num1, setNum1] = useState(2);
@@ -16,16 +19,54 @@ const Usflash = () => {
 	const [correct, setCorrect] = useState(true);
 	const [usemail, setUsemail] = useState("");
 	const [usglevel, setUsglevel] = useState("");
+	const [usid, setUsid] = useState(0);
 	const inputRef = useRef(null);
 	const email = window.localStorage.getItem('Email');
 
-	axios.get(`http://localhost:5000/register/${email}`)
-	  .then((response) => {
-	    console.log(response.data.email);
-	    setUsemail(response.data.email);
-	    setUsscore(response.data.score);
-	    setUsglevel(response.data.glevel);
-  	});
+	 const [playbackRate, setPlaybackRate] = useState(0.75);
+	const soundUrl = 'https://github.com/jumpstarter3390/frontend/blob/main/src/success.mp3?raw=true';
+	const wrong = 'https://github.com/jumpstarter3390/frontend/blob/main/src/incorrect.mp3?raw=true';
+
+	const [play] = useSound(soundUrl, {
+		playbackRate,
+		volume: 1,
+	});
+
+	const handleClick = () => {
+     setPlaybackRate(playbackRate + 0.1);
+     play();
+   	};
+
+	 const [play2] = useSound(wrong, {
+		 playbackRate,
+		 volume: 1,
+	 });
+
+	 const handleClick2 = () => {
+			 setPlaybackRate(playbackRate + 0.1);
+			 play2();
+		 };
+
+	useEffect(() => {
+		axios.get(`http://localhost:5000/register/${email}`)
+	  	.then((response) => {
+		    console.log(response.data.email);
+		    setUsemail(response.data.email);
+		    setUsscore(response.data.score);
+		    setUsglevel(response.data.glevel);
+		    setUsid(response.data._id);
+		    window.localStorage.setItem('Id', usid);
+  		});
+
+
+	}, []);
+
+	const putUsscore = () => {
+		axios.put(`http://localhost:5000/register/update/${usid}`, {
+			score: usscore,
+			isLoggedIn: true,
+		});
+	}
 
 
 	  function randomNumberInRange(min, max) {
@@ -64,6 +105,7 @@ const Usflash = () => {
 				 setAns(num1 * num2)
 				 if(num1 * num2 == usans){
 				 	setScore(score + 1);
+				 	handleClick();
 
 				 	if(usglevel == "2"){
 					 	setNum1(randomNumberInRange(0, 10));
@@ -83,10 +125,19 @@ const Usflash = () => {
 	  					setNum2(randomNumberInRange(100, 5000));
   					
   					}
+  					if(score > usscore) {
+  						setUsscore(score + 1);
+  						putUsscore();
+  					}
   					inputRef.current.value = "";
 							
 				 }
 				 else {
+				 	handleClick2();
+				 	if(score > usscore) {
+  						setUsscore(score);
+  						putUsscore();
+  					}
 				 	setScore(0);
 				 	setCorrect(true)
 				 	inputRef.current.value = "";
@@ -101,7 +152,7 @@ const Usflash = () => {
 			{usans != ans && <h2 style={{visibility: correct ? 'visible' : 'hidden' }}> Incorrect </h2>}
 
 		</div>
-
+	 
 		</div>
 	);
 };
