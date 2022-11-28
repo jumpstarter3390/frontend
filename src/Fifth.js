@@ -1,9 +1,11 @@
 import React from 'react';
-
+import Flashcard5 from './flashcard5';
 const Fifth = () => {
   return (
     <div>
-      <h1 className="text-5xl text-center">This will be the Fifth Grade Page</h1>
+
+
+        <Flashcard5/>
 
 
     </div>
