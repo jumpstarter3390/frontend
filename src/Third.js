@@ -1,11 +1,11 @@
 import React from 'react';
-import Flashcard from './flashcard';
+import Flashcard3 from './flashcard3';
 const Third = () => {
   return (
     <div>
-      
 
-        <Flashcard/>
+
+        <Flashcard3/>
 
 
     </div>
