@@ -35,7 +35,7 @@ const Header = () => {
   {
     return(
       <div className="navbar">
-      
+
           <div className="flex-1">
             <h4 className="h4">JumpStarter</h4>
             </div>
@@ -49,7 +49,7 @@ const Header = () => {
                 </ul>
           </div>
 
-        
+
       </div>
 
     );
@@ -58,7 +58,7 @@ const Header = () => {
   {
         return(
       <div className="navbar">
-      
+
           <div className="flex-1">
             <h4 className="h4">JumpStarter</h4>
             </div>
@@ -72,7 +72,7 @@ const Header = () => {
                 </ul>
           </div>
 
-        
+
       </div>
 
     );
