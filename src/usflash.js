@@ -1,11 +1,10 @@
 import {useState, useEffect, useRef} from 'react';
 import useSound from 'use-sound';
-import './flashcard.css';
 import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
-import SFX from './correct.mp3';
 import axios from "axios";
 import Header from "./Header";
+import './flashcard.css';
 
 
 const Usflash = () => {
@@ -84,22 +83,21 @@ const Usflash = () => {
    const handleAns = () => {
 
    	setCorrect(true);
-
-
    }
+
 	return (
 
-		<div className="c">
+		<div className="fc">
 
-		<div className="card">
-			
-			<h1 className="usemail"> Welcome {usemail} ! </h1>
-			<h1 className="usscore"> Current High Score: {usscore}  </h1>
-			<h2 id= "num1">{num1}</h2>
-			<h2 id = "num2">{num2}</h2>
-			
-			<input type="text" ref={inputRef} id="answer" name="answer" onChange={e => {setUsans(e.target.value);} }/>
-			<Button onClick={e =>
+		<div className="fcard">
+
+			<h1 className="fusemail"> Welcome {usemail} ! </h1>
+			<h1 className="fusscore"> Current High Score: {usscore}  </h1>
+			<h2 id= "fnum1">{num1}</h2>
+			<h2 id = "fnum2">{num2}</h2>
+
+			<input type="text" ref={inputRef} id="fanswer" name="answer" onChange={e => {setUsans(e.target.value);} }/>
+			<Button id="fButton" onClick={e =>
 				{
 				 setCorrect(false)
 				 setAns(num1 * num2)
@@ -110,27 +108,30 @@ const Usflash = () => {
 				 	if(usglevel == "2"){
 					 	setNum1(randomNumberInRange(0, 10));
 	  					setNum2(randomNumberInRange(0, 10));
-  					} else if(usglevel == "3") {
+  					}
+
+						 else if(usglevel == "3") {
 					 	setNum1(randomNumberInRange(10, 50));
 	  					setNum2(randomNumberInRange(10, 50));
-  					
+
   					}
   					else if(usglevel == "4") {
 					 	setNum1(randomNumberInRange(50, 100));
 	  					setNum2(randomNumberInRange(50, 100));
-  					
+
   					}
+
   					else if(usglevel == "5") {
 					 	setNum1(randomNumberInRange(100, 5000));
 	  					setNum2(randomNumberInRange(100, 5000));
-  					
-  					}
+						}
+
   					if(score > usscore) {
   						setUsscore(score + 1);
   						putUsscore();
   					}
   					inputRef.current.value = "";
-							
+
 				 }
 				 else {
 				 	handleClick2();
@@ -144,15 +145,15 @@ const Usflash = () => {
 				 }
 
 			}}> Submit answer </Button>
-			
 
-			<h2 id = "score">Score: {score}</h2>
 
-			{usans == ans && <h2 style={{visibility: correct ? 'hidden' : 'visible'}}> Correct! </h2>}
-			{usans != ans && <h2 style={{visibility: correct ? 'visible' : 'hidden' }}> Incorrect </h2>}
+			<h2 id = "fscore">Score: {score}</h2>
+
+			{usans == ans && <h2 id ="vis" style={{visibility: correct ? 'hidden' : 'visible'}}> Correct! </h2>}
+			{usans != ans && <h2 id = "vis" style={{visibility: correct ? 'visible' : 'hidden' }}> Incorrect </h2>}
 
 		</div>
-	 
+
 		</div>
 	);
 };
