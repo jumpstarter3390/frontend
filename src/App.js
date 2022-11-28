@@ -10,7 +10,8 @@ import Fourth from "./Fourth";
 import Fifth from "./Fifth";
 import Login from "./Login"
 import Usflash from "./usflash";
-import Logout from "./Logout"
+import Logout from "./Logout";
+import "./flashcard.css";
 
 
 
