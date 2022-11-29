@@ -1,10 +1,11 @@
 import React from 'react';
-
+import Develop from './developers';
 const Developers = () => {
     return (
-        <div>
-            <h1 className="text-5xl text-center">Developers</h1>
-        </div>
-    );
-};
+      <div>
+          <Develop/>
+      </div>
+
+      );
+    };
 export default Developers;
