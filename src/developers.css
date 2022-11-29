@@ -1,0 +1,42 @@
+.layoutdev
+{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ justify-content: space-around;
+}
+
+img#dev
+{
+  width: 25%;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  top:300px;
+
+}
+.menuheader
+{
+  text-align: center;
+  font-size: 50px;
+}
+.Geno
+{
+  position: absolute;
+  top: 350px;
+  left: 10%;
+}
+
+.David
+{
+  position: absolute;
+  top: 350px;
+  left: 45%;
+}
+
+.Udai
+{
+  position: absolute;
+  top: 350px;
+  left: 80%;
+}
