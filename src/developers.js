@@ -1,8 +1,8 @@
 import React from 'react';
 import "./developers.css";
-import second from './3rdgrade.jpg';
+import Geno from './Geno.jpg';
 import David from './David.jpg';
-import fourth from './3rdgrade.jpg';
+import Udai from './Udai.jpg';
 
 
 const Team = () => {
@@ -13,9 +13,9 @@ const Team = () => {
         <h1 className="David">David Mesa</h1>
         <h1 className="Udai">Udai Singh</h1>
         <div className="layoutdev">
-        <img id = "dev" src={second} alt={"Geno "}/>
+        <img id = "dev" src={Geno} alt={"Geno "}/>
           <img id="dev"  src={David}  alt={"David"}/>
-        <img  id="dev" src={fourth} alt={"Udai"} />
+        <img  id="dev" src={Udai} alt={"Udai"} />
         </div>
       </div>
 
