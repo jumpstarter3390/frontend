@@ -16,3 +16,27 @@
     width:50%;
     margin:0 auto;
 }
+.logs
+{
+  display: flex;
+  align-items: center;
+}
+#message
+{
+  position: fixed;
+  top: 110px;
+  left: 36%;
+}
+#email
+{
+  position: fixed;
+  left: 40%;
+  top: 150px;
+}
+#logButton
+{
+  position: fixed;
+  left: 45%;
+  height: 5%;
+  width: 12%;
+}
